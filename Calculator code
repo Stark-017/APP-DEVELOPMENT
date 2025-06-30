@@ -1,0 +1,47 @@
+import javax.swing.*;
+import java.awt.*;
+
+public class CalculatorFrontend {
+
+    public static void main(String[] args) {
+        // Create frame
+        JFrame frame = new JFrame("Calculator");
+        frame.setSize(300, 400);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        // Create text field
+        JTextField display = new JTextField();
+        display.setEditable(false);
+        display.setFont(new Font("Arial", Font.BOLD, 24));
+        display.setHorizontalAlignment(JTextField.RIGHT);
+        frame.add(display, BorderLayout.NORTH);
+
+        // Create panel for buttons
+        JPanel panel = new JPanel();
+        panel.setLayout(new GridLayout(5, 4, 5, 5));
+
+        // Button labels
+        String[] buttons = {
+            "C", "←", "/", "*",
+            "7", "8", "9", "-",
+            "4", "5", "6", "+",
+            "1", "2", "3", "=",
+            "0", ".", "", ""
+        };
+
+        // Add buttons to panel
+        for (String text : buttons) {
+            if (text.equals("")) {
+                panel.add(new JLabel()); // Empty placeholder
+            } else {
+                JButton btn = new JButton(text);
+                btn.setFont(new Font("Arial", Font.BOLD, 18));
+                panel.add(btn);
+            }
+        }
+
+        // Add panel to frame
+        frame.add(panel, BorderLayout.CENTER);
+        frame.setVisible(true);
+    }
+}
